@@ -7,6 +7,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtGuard } from './auth/jwt.guard';
 import { JwtStrategy } from './auth/jwt.strategy';
+import { RolesGuard } from './auth/roles.guard';
 
 @Module({
   imports: [AuthModule, PrismaModule],
@@ -17,6 +18,10 @@ import { JwtStrategy } from './auth/jwt.strategy';
     {
       provide: APP_GUARD,
       useClass: JwtGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
     JwtStrategy,
   ],

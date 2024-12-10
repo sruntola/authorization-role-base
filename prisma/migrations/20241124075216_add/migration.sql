@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "Role" AS ENUM ('Admin', 'User');
+
 -- CreateTable
 CREATE TABLE "Product" (
     "id" SERIAL NOT NULL,
@@ -14,6 +17,7 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "roles" "Role"[],
     "email_verified_at" TIMESTAMP(3),
     "remember_token" TEXT,
     "last_login_at" TIMESTAMP(3),

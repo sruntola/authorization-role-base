@@ -32,7 +32,11 @@ export class AuthService {
         result.password,
       );
       if (isMatch) {
-        const payload = { email: result.email, id: result.id };
+        const payload = {
+          email: result.email,
+          id: result.id,
+          roles: result.roles,
+        };
         const token = await this.jwtService.sign(payload, {
           secret: constants.secret,
         });
